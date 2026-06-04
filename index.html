@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Movie Hub App</h1>
+        <div class="search_area">
+            <input id="search_input" type="text" placeholder="Enter movie name">
+            <div class="btns_container">
+                <button id="search_btn">Search</button>
+                <button id="show_fav_btn">Favorites</button>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <h2 id="msg_txt"></h2>
+        
+        <section class="result_container">
+        </section>
+
+        <section class="details_container">
+            <button id="backbtn">Back</button>
+            <div class="details_section">
+                <img id="movie_pic">
+                <div class="movie_info">
+                    <h3 id="movie_title"></h3>
+                    <p id="movie_meta"></p>
+                    <p id="movie_rating"></p>
+                    <p id="movie_plot"></p>
+                    <button class="favorite_btn">♡ Add to Favorites</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="fav_container">
+            
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>

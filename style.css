@@ -1,0 +1,327 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    align-items: center;
+    font-family: verdana, sans-serif;
+    background-color: var(--BGcolor);
+}
+
+:root{
+    --BGcolor :#111827;
+    --PrimaryColor :#F9FAFB;
+    --SecondaryColor :#9CA3AF;
+    --Accent :#E50914;
+    --CardsBG :#1F2937;
+}
+
+header{
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1{
+    color: var(--PrimaryColor);
+    margin-bottom: 40px;
+    font-size: clamp(28px, 4.5vw, 44px);
+}
+
+.search_area{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 45px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+#search_input{
+    width: 60vw;
+    max-width :450px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-left: 20px;
+    font-size: clamp(12px, 2.5vw, 18px);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btns_container{
+    display: flex;
+    gap: 20px;
+    margin: 0 20px;
+}
+
+#search_btn, #show_fav_btn{
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: clamp(10px, 2.5vw, 18px);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    background-color: var(--Accent);
+    color: var(--PrimaryColor);
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+#search_btn:hover, #show_fav_btn:hover{
+    transform: scale(105%);
+    opacity: 0.8;
+}
+
+#search_btn:active, #show_fav_btn:active{
+    transform: scale(95%) !important;
+    opacity: 1 !important;
+}
+
+main {
+    width: 100%;
+    height: fit-content;
+}
+
+#msg_txt{
+    font-size: clamp(18px, 3.2vw, 30px);
+    display: none;
+    color: var(--SecondaryColor);
+    white-space: pre-line;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.75;
+}
+
+#msg_txt.checked{
+    white-space: pre-line;
+    font-size: clamp(10px, 2.5vw, 18px);
+}
+
+
+#msg_txt.checked::first-line{
+    color :gold;
+    font-size: clamp(18px, 3.2vw, 30px);
+}
+
+.result_container{
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    justify-items: center;
+    gap: 30px 30px;
+    padding: 0 30px;
+    padding-bottom: 20px;
+    width: 100%;
+    min-height: 400px;
+}
+
+.movie_card{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(170px, 50vw, 260px);
+    aspect-ratio: 2 / 3;
+    border-radius: 15px;
+    background-color: var(--CardsBG);
+    transition: all 0.3s;
+}
+
+.movie_card:hover{
+    transform: scale(103%);
+    box-shadow: 0 0 10px 5px hsla(0, 0%, 0%, 0.25);
+}
+
+.movie_card:active{
+    transform: scale(97%) translateY(-4px) !important;
+    box-shadow: 0 0 1px 7px hsla(0, 88%, 27%, 0.2) !important;
+}
+
+.movie_cover{
+    width: 90%;
+    border: 2px black solid;
+    object-fit: cover;
+    aspect-ratio: 2 / 3;
+    margin: 15px 0;
+    border-radius: 15px;
+}
+
+.movie_title{
+    margin: 0 3px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: var(--PrimaryColor);
+    font-size: clamp(12px, 2.4vw, 18px);
+    height: 2lh;
+    overflow: hidden;
+
+}
+.movie_year{
+    margin-bottom: 7px;
+    text-align: center;
+    color: var(--SecondaryColor);
+    font-size: clamp(8px, 2vw, 12px);
+}
+
+.details_container{
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+#backbtn{
+    margin: 20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--Accent);
+    color: var(--PrimaryColor);
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    font-size: clamp(12px, 2vw, 22px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#backbtn:hover{
+    transform: scale(105%);
+    opacity: 0.8;
+}
+
+#backbtn:active{
+    transform: scale(95%) !important;
+    opacity: 1 !important;
+}
+
+.details_section{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    width: 95%;
+    margin: auto;
+    padding: 20px 0;
+    border: 2px solid var(--Accent);
+    box-shadow: 0 0 15px 7px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: var(--CardsBG);
+}
+
+#movie_pic{
+    width: clamp(250px, 50%, 320px);
+    border-radius: 15px;
+    aspect-ratio: 2 / 3;
+    margin: auto 3vw;
+}
+
+.movie_info{
+    padding: 60px 20px;
+    padding-left: 40px;
+
+}
+
+#movie_title{
+    color: var(--PrimaryColor);
+    font-size: clamp(20px, 3.2vw, 36px);
+    margin-bottom: 20px;
+}
+
+#movie_meta{
+    color: var(--SecondaryColor);
+    font-size: clamp(12px, 2vw, 18px);
+    margin-bottom: 20px;
+}
+
+#movie_rating{
+    color: var(--SecondaryColor);
+    font-size: clamp(12px, 2vw, 18px);
+    margin-bottom: 20px;
+}
+
+#movie_plot{
+    color: var(--SecondaryColor);
+    letter-spacing: 3%;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 700px;
+    font-size: clamp(10px, 1.8vw, 16px);
+}
+
+.favorite_btn{
+    color: var(--Accent);
+    background-color: var(--PrimaryColor);
+    font-size: clamp(10px, 2.5vw, 18px);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.favorite_btn:hover{
+    transform: scale(105%);
+    box-shadow: 0 0 10px 5px hsla(0, 0%, 0%, 0.4);
+    opacity: 0.9;
+}
+
+.favorite_btn:active{
+    transform: scale(0.97) translateY(-2px) !important;
+    opacity: 1 !important;
+}
+
+.favorite_btn.checked{
+    color: var(--PrimaryColor);
+    background-color: var(--Accent);
+    
+}
+
+.fav_container{
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    justify-items: center;
+    gap: 30px 30px;
+    padding: 0 30px;
+    padding-bottom: 20px;
+    width: 100%;
+    min-height: 400px;
+}
+
+@media(max-width:920px) {
+    .details_section{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    #movie_pic{
+        margin: auto;
+        margin-top: 20px;
+    }
+}
+
+@media (hover: none){
+
+    #search_btn:hover, #show_fav_btn:hover{
+        transform: none;
+        opacity: 1;
+    }
+
+    .movie_card:hover{
+        transform: none;
+        box-shadow: none;
+    }
+
+    #backbtn:hover{
+        transform: none;
+        opacity: 1;
+    }
+
+    
+    .favorite_btn:hover{
+        transform: none;
+        box-shadow: none;
+        opacity: 1;
+    }
+}
